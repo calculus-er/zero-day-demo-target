@@ -6,7 +6,8 @@ Tier 1 staging variant — same HTTP contract as the main arena, different imple
 - GET  /health, GET /
 
 Drop into arena/source as app.py, or arena/incoming + sync, or set ARENA_RESET_SAMPLE.
-"""
+"""    
+
 from __future__ import annotations
 
 import json
