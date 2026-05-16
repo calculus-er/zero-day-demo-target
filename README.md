@@ -1,3 +1,0 @@
-# zero-day-demo-target
-...
- 
