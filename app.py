@@ -113,20 +113,13 @@ def create_app():
         u = body.get("username", "")
         p = body.get("password", "")
 
-        # Intentionally unsafe: raw string concatenation (user input is SQL syntax).
-        parts = [
-            "SELECT * FROM users WHERE username='",
-            u,
-            "' AND password='",
-            p,
-            "'",
-        ]
-        sql_text = "".join(parts)
-
         conn = _connect()
         cur = conn.cursor()
         try:
-            cur.execute(sql_text)
+            cur.execute(
+                "SELECT * FROM users WHERE username=? AND password=?",
+                (u, p),
+            )
             rows = cur.fetchall()
         except sqlite3.Error:
             conn.close()
